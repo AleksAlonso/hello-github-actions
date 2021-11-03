@@ -2,12 +2,12 @@ name: A workflow for my Hello World file
 on: push
 env:
   AZURE_WEBAPP_NAME: aleks-test   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: './dist/'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '14.x'                # set this to the node version to use
 
 jobs:
   build:
-    name: Hello world action
+    name: Build angular application
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -32,6 +32,7 @@ jobs:
           name: webapp
           path: ./dist/**
   deploy:
+    name: Deploy to Azure
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +40,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: webapp
+          path: 
       - uses: azure/login@v1
         with:
             creds: ${{ secrets.AZURE }}
