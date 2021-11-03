@@ -10,5 +10,5 @@ jobs:
         with:
           MY_NAME: "Mona"
       - uses: azure/login@v1
-      with:
-          creds: ${{ secrets.AZURE }}
+        with:
+            creds: ${{ secrets.AZURE }}
