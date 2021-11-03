@@ -1,4 +1,5 @@
 import path from "path";
+// eslint-disable-next-line import/namespace,import/default
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
